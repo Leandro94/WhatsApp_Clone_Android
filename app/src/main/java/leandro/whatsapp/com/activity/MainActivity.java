@@ -1,8 +1,10 @@
-package leandro.whatsapp.com;
+package leandro.whatsapp.com.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+
+import leandro.whatsapp.com.R;
 
 public class MainActivity extends AppCompatActivity {
 

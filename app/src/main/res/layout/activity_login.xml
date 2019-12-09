@@ -7,7 +7,7 @@
     android:background="@color/colorPrimary"
     app:layout_constraintHorizontal_chainStyle="spread_inside"
     app:layout_constraintVertical_chainStyle="spread_inside"
-    tools:context=".LoginActivity"
+    tools:context=".activity.LoginActivity"
     tools:layout_editor_absoluteY="25dp">
 
     <ImageView
@@ -39,6 +39,7 @@
         app:layout_constraintTop_toBottomOf="@+id/imageView">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/editLoginEmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/digite_email"
@@ -59,6 +60,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textInputLayout">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/editLoginSenha"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/digite_senha"
@@ -74,6 +76,7 @@
         android:layout_marginEnd="32dp"
         android:layout_marginRight="32dp"
         android:background="@color/colorPrimaryDark"
+        android:onClick="validarAutenticacaoUsuario"
         android:text="@string/botao_logar"
         android:textColor="@android:color/white"
         app:layout_constraintBottom_toTopOf="@+id/textView"
