@@ -17,6 +17,7 @@ import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
 import com.google.firebase.auth.FirebaseAuthInvalidUserException;
 import com.google.firebase.auth.FirebaseAuthUserCollisionException;
 import com.google.firebase.auth.FirebaseAuthWeakPasswordException;
+import com.google.firebase.auth.FirebaseUser;
 
 import leandro.whatsapp.com.R;
 import leandro.whatsapp.com.config.ConfiguracaoFirebase;
@@ -73,6 +74,17 @@ public class LoginActivity extends AppCompatActivity {
         });
 
     }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        FirebaseUser usuarioAtual =  autenticacao.getCurrentUser();
+        if(usuarioAtual!=null)
+        {
+            abrirTelaPrincipal();
+        }
+    }
+
     public void validarAutenticacaoUsuario(View view){
         //Recuperar texto
         String textoEmail =  editEmail.getText().toString();
