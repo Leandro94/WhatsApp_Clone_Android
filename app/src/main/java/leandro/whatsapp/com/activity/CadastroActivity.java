@@ -18,6 +18,7 @@ import com.google.firebase.auth.FirebaseAuthWeakPasswordException;
 
 import leandro.whatsapp.com.R;
 import leandro.whatsapp.com.config.ConfiguracaoFirebase;
+import leandro.whatsapp.com.helper.Base64Custom;
 import leandro.whatsapp.com.model.Usuario;
 
 public class CadastroActivity extends AppCompatActivity {
@@ -36,7 +37,7 @@ public class CadastroActivity extends AppCompatActivity {
 
 
     }
-    public void salvarUsuario(Usuario usuario){
+    public void salvarUsuario(final Usuario usuario){
 
         autenticacao = ConfiguracaoFirebase.getFirebaseAutenticacao();
         autenticacao.createUserWithEmailAndPassword(usuario.getEmail(),usuario.getSenha()).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
@@ -45,6 +46,15 @@ public class CadastroActivity extends AppCompatActivity {
                 if(task.isSuccessful()){
                     Toast.makeText(CadastroActivity.this,"Sucesso ao cadastrar usuário",Toast.LENGTH_SHORT).show();
                     finish();
+                    try{
+                        String identificadorUsuario = Base64Custom.codificarBase64(usuario.getEmail());
+                        usuario.setId(identificadorUsuario);
+                        usuario.salvar();
+
+                    }
+                    catch (Exception e){
+                        e.printStackTrace();
+                    }
                 }
                 else{
                     String excecao="";
